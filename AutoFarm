@@ -1,15 +1,88 @@
-local args1 = {
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+local cando = false
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local UICorner = Instance.new("UICorner")
+local UICorner_2 = Instance.new("UICorner")
+local TextButton = Instance.new("TextButton")
+local UICorner_3 = Instance.new("UICorner")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.127847165, 0, 0.144254282, 0)
+Frame.Size = UDim2.new(0.126377657, 0, 0.325183362, 0)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 247, 0)
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(1.00000012, 0, 0.157894731, 0)
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.Text = "Lifting Simulator Script"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+UICorner.Parent = TextLabel
+
+UICorner_2.Parent = Frame
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
+TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.0755814016, 0, 0.210526317, 0)
+TextButton.Size = UDim2.new(0.837209404, 0, 0.24060151, 0)
+TextButton.Font = Enum.Font.SourceSansBold
+TextButton.Text = "Auto Farm"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextScaled = true
+TextButton.TextSize = 14.000
+TextButton.TextWrapped = true
+TextButton.MouseButton1Down:Connect(function()
+    cando = true
+    local args1 = {
     [1] = {
         [1] = "SellMuscle"
+        }
     }
-}
 
-local args = {
-    [1] = {
-        [1] = "GainMuscle"
+    local args = {
+        [1] = {
+            [1] = "GainMuscle"
+        }
     }
-}
-while task.wait(0.1) do
-    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args1))
-    game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+
+    while task.wait(0.1) do
+        game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args1))
+        game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
+    end
+
+
+
+    
+end)
+
+UICorner_3.CornerRadius = UDim.new(0, 3)
+UICorner_3.Parent = TextButton
+
+-- Scripts:
+
+local function USVUN_fake_script() -- TextButton.LocalScript 
+local script = Instance.new('LocalScript', TextButton)
+
+
 end
+coroutine.wrap(USVUN_fake_script)()
