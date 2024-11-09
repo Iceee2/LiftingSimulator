@@ -1,12 +1,12 @@
 -- Gui to Lua
--- Version: 3.2
+-- Version: 3.4
 
 -- Instances:
 local cando1 = false
 local cando = false
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
-local TextLabel = Instance.new("TextLabel")
+local TextLabel = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
 local UICorner_2 = Instance.new("UICorner")
 local TextButton = Instance.new("TextButton")
@@ -110,20 +110,3 @@ local script = Instance.new('LocalScript', TextButton)
 
 end
 coroutine.wrap(USVUN_fake_script)()
-
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
- 
-mouse.Button1Down:Connect(function()
-	Holding.Value = true
-end)
- 
-mouse.Button1Up:Connect(function()
-	Holding.Value = false
-end)
- 
-mouse.Move:Connect(function()
-	if Holding.Value == true then
-		ScreenGui.Frame.Position = UDim2.new(0,mouse.X,0,mouse.Y)
-	end
-end)
