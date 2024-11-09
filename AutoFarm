@@ -105,4 +105,25 @@ UICorner_4.Parent = TextButton1
 
 -- Scripts:
 local function USVUN_fake_script() -- TextButton.LocalScript 
-local script = Instance.ne
+local script = Instance.new('LocalScript', TextButton)
+
+
+end
+coroutine.wrap(USVUN_fake_script)()
+
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+ 
+TextLabel.MouseButton1Down:Connect(function()
+	Holding.Value = true
+end)
+ 
+TextLabel.MouseButton2Down:Connect(function()
+	Holding.Value = false
+end)
+ 
+mouse.Move:Connect(function()
+	if Holding.Value == true then
+		ScreenGui.Frame.Position = UDim2.new(-0.05,mouse.X,-0.03,mouse.Y)
+	end
+end)
