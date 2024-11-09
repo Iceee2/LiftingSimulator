@@ -1,11 +1,11 @@
 -- Gui to Lua
--- Version: 3.4
+-- Version: 3.5
 
 -- Instances:
 local cando1 = false
 local cando = false
 local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
+local Frame = Instance.new("ScrollingFrame")
 local TextLabel = Instance.new("TextButton")
 local UICorner = Instance.new("UICorner")
 local UICorner_2 = Instance.new("UICorner")
@@ -27,12 +27,13 @@ Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 Frame.BorderSizePixel = 0
 Frame.Position = UDim2.new(0.127847165, 0, 0.144254282, 0)
 Frame.Size = UDim2.new(0.126377657, 0, 0.325183362, 0)
+Frame.Name = "Frame"
 
 TextLabel.Parent = Frame
 TextLabel.BackgroundColor3 = Color3.fromRGB(255, 247, 0)
 TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextLabel.BorderSizePixel = 0
-TextLabel.Size = UDim2.new(1.00000012, 0, 0.157894731, 0)
+TextLabel.Size = UDim2.new(0.800000131, 0, 0.0189473126, 0)
 TextLabel.Font = Enum.Font.SourceSansBold
 TextLabel.Text = "Lifting Simulator Script"
 TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -48,8 +49,8 @@ TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
 TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.0755814016, 0, 0.237649270, 0)
-TextButton.Size = UDim2.new(0.837209404, 0, 0.24060151, 0)
+TextButton.Position = UDim2.new(0.0755814016, 0, 0.0376492776, 0)
+TextButton.Size = UDim2.new(0.837209404, 0, 0.0406015106, 0)
 TextButton.Font = Enum.Font.SourceSansBold
 TextButton.Text = "Auto Farm"
 TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -83,8 +84,8 @@ TextButton1.Parent = Frame
 TextButton1.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
 TextButton1.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton1.BorderSizePixel = 0
-TextButton1.Position = UDim2.new(0.0755814016, 0, 0.5, 0)
-TextButton1.Size = UDim2.new(0.837209404, 0, 0.24060151, 0)
+TextButton1.Position = UDim2.new(0.0755814016, 0, 0.0876492783, 0)
+TextButton1.Size = UDim2.new(0.837209404, 0, 0.0406015106, 0)
 TextButton1.Font = Enum.Font.SourceSansBold
 TextButton1.Text = "Auto Kill Boss"
 TextButton1.TextColor3 = Color3.fromRGB(0, 0, 0)
@@ -105,25 +106,4 @@ UICorner_4.Parent = TextButton1
 
 -- Scripts:
 local function USVUN_fake_script() -- TextButton.LocalScript 
-local script = Instance.new('LocalScript', TextButton)
-
-
-end
-coroutine.wrap(USVUN_fake_script)()
-
-local player = game.Players.LocalPlayer
-local mouse = player:GetMouse()
- 
-TextLabel.MouseButton1Down:Connect(function()
-	Holding.Value = true
-end)
- 
-TextLabel.MouseButton2Down:Connect(function()
-	Holding.Value = false
-end)
- 
-mouse.Move:Connect(function()
-	if Holding.Value == true then
-		ScreenGui.Frame.Position = UDim2.new(-0.05,mouse.X,-0.03,mouse.Y)
-	end
-end)
+local script = Instance.new('LocalScript', TextBut
