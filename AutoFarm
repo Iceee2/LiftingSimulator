@@ -13,9 +13,11 @@ local TextButton = Instance.new("TextButton")
 local TextButton1 = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
 local UICorner_4 = Instance.new("UICorner")
+local Holding = Instance.new("BoolValue")
 
 --Properties:
 
+Holding.Parent = ScreenGui
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -108,3 +110,20 @@ local script = Instance.new('LocalScript', TextButton)
 
 end
 coroutine.wrap(USVUN_fake_script)()
+
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+ 
+mouse.Button1Down:Connect(function()
+	Holding.Value = true
+end)
+ 
+mouse.Button1Up:Connect(function()
+	Holding.Value = false
+end)
+ 
+mouse.Move:Connect(function()
+	if Holding.Value == true then
+		ScreenGui.Frame.Position = UDim2.new(0,mouse.X,0,mouse.Y)
+	end
+end)
