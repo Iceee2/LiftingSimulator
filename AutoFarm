@@ -2,6 +2,7 @@
 -- Version: 3.2
 
 -- Instances:
+local cando1 = false
 local cando = false
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
@@ -9,7 +10,9 @@ local TextLabel = Instance.new("TextLabel")
 local UICorner = Instance.new("UICorner")
 local UICorner_2 = Instance.new("UICorner")
 local TextButton = Instance.new("TextButton")
+local TextButton1 = Instance.new("TextButton")
 local UICorner_3 = Instance.new("UICorner")
+local UICorner_4 = Instance.new("UICorner")
 
 --Properties:
 
@@ -43,7 +46,7 @@ TextButton.Parent = Frame
 TextButton.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
 TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton.BorderSizePixel = 0
-TextButton.Position = UDim2.new(0.0755814016, 0, 0.210526317, 0)
+TextButton.Position = UDim2.new(0.0755814016, 0, 0.237649270, 0)
 TextButton.Size = UDim2.new(0.837209404, 0, 0.24060151, 0)
 TextButton.Font = Enum.Font.SourceSansBold
 TextButton.Text = "Auto Farm"
@@ -52,6 +55,9 @@ TextButton.TextScaled = true
 TextButton.TextSize = 14.000
 TextButton.TextWrapped = true
 TextButton.MouseButton1Down:Connect(function()
+    if cando == true then
+        cando = false
+    end
     cando = true
     local args1 = {
     [1] = {
@@ -65,21 +71,44 @@ TextButton.MouseButton1Down:Connect(function()
         }
     }
 
-    while task.wait(0.1) do
+    repeat
         game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args1))
         game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
-    end
+    until cando == true
 
 
 
     
 end)
 
-UICorner_3.CornerRadius = UDim.new(0, 3)
-UICorner_3.Parent = TextButton
+TextButton1.Parent = Frame
+TextButton1.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
+TextButton1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton1.BorderSizePixel = 0
+TextButton1.Position = UDim2.new(0.0755814016, 0, 0.463703378, 0)
+TextButton1.Size = UDim2.new(0.837209404, 0, 0.24060151, 0)
+TextButton1.Font = Enum.Font.SourceSansBold
+TextButton1.Text = "Auto Kill Boss (might fail)"
+TextButton1.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton1.TextScaled = true
+TextButton1.TextSize = 14.000
+TextButton1.TextWrapped = true
+TextButton1.MouseButton1Down:Connect(function()
+    repeat
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.NPC:WaitForChild("Boss_1_SpawnPart"):WaitForChild("HumanoidRootPart").CFrame
+        local a = game.Players.LocalPlayer.Character.Humanoid
+        a:EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("Fist"))
+        game.Players.LocalPlayer.Character:WaitForChild("Fist"):Activate()
+        wait(0.5)
+    until TextButton1.MouseButton1Down
+end)
+
+UICorner_4.CornerRadius = UDim.new(0, 3)
+UICorner_4.Parent = TextButton1
 
 -- Scripts:
 
+Frame.ResetOnSpawn = false
 local function USVUN_fake_script() -- TextButton.LocalScript 
 local script = Instance.new('LocalScript', TextButton)
 
