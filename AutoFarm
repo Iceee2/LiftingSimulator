@@ -71,44 +71,37 @@ TextButton.MouseButton1Down:Connect(function()
         }
     }
 
-    repeat
+    while task.wait(0.4) do
         game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args1))
         game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvent"):FireServer(unpack(args))
-    until cando == true
-
-
-
-    
+    end
 end)
 
 TextButton1.Parent = Frame
 TextButton1.BackgroundColor3 = Color3.fromRGB(230, 230, 230)
 TextButton1.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton1.BorderSizePixel = 0
-TextButton1.Position = UDim2.new(0.0755814016, 0, 0.463703378, 0)
+TextButton1.Position = UDim2.new(0.0755814016, 0, 0.5, 0)
 TextButton1.Size = UDim2.new(0.837209404, 0, 0.24060151, 0)
 TextButton1.Font = Enum.Font.SourceSansBold
-TextButton1.Text = "Auto Kill Boss (might fail)"
+TextButton1.Text = "Auto Kill Boss"
 TextButton1.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextButton1.TextScaled = true
 TextButton1.TextSize = 14.000
 TextButton1.TextWrapped = true
-TextButton1.MouseButton1Down:Connect(function()
-    repeat
+TextButton1.MouseButton1Down:Connect(function(input)
+    while task.wait(0.5) do
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.NPC:WaitForChild("Boss_1_SpawnPart"):WaitForChild("HumanoidRootPart").CFrame
         local a = game.Players.LocalPlayer.Character.Humanoid
         a:EquipTool(game.Players.LocalPlayer.Backpack:WaitForChild("Fist"))
         game.Players.LocalPlayer.Character:WaitForChild("Fist"):Activate()
-        wait(0.5)
-    until TextButton1.MouseButton1Down
+    end
 end)
 
 UICorner_4.CornerRadius = UDim.new(0, 3)
 UICorner_4.Parent = TextButton1
 
 -- Scripts:
-
-Frame.ResetOnSpawn = false
 local function USVUN_fake_script() -- TextButton.LocalScript 
 local script = Instance.new('LocalScript', TextButton)
 
