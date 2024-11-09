@@ -105,8 +105,4 @@ UICorner_4.Parent = TextButton1
 
 -- Scripts:
 local function USVUN_fake_script() -- TextButton.LocalScript 
-local script = Instance.new('LocalScript', TextButton)
-
-
-end
-coroutine.wrap(USVUN_fake_script)()
+local script = Instance.ne
